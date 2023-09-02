@@ -294,8 +294,8 @@ EXTERN struct process *curr_proc;
 EXTERN struct process *last_proc;
 EXTERN pid_t next_pid;
 EXTERN unsigned nprocs;
-EXTERN int do_get_process_info(int i);
-EXTERN int get_process_info(int i);
+EXTERN int do_get_process_info(pid_t pid, struct process_buf *buf);
+EXTERN int get_process_info(pid_t pid, struct process_buf *buf);
 
 #endif /* _ASM_FILE */
 

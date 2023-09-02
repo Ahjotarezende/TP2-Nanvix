@@ -1,6 +1,7 @@
 #include <nanvix/syscall.h>
 #include <errno.h>
-int get_process_info(int i)
+#include <nanvix/pm.h>
+int get_process_info(pid_t pid, struct process_buf *buf)
 {
     int ret;
 
@@ -8,7 +9,8 @@ int get_process_info(int i)
         "int $0x80"
         : "=a"(ret)
         : "0"(NR_getpi),
-          "b"(i));
+          "b"(pid),
+          "c"(buf));
 
     /* Error. */
     if (ret < 0)

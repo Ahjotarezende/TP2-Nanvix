@@ -20,7 +20,7 @@
 
 #ifndef NANVIX_SYSCALL_H_
 #define NANVIX_SYSCALL_H_
-
+#include <nanvix/pm.h>
 #include <nanvix/const.h>
 #include <sys/stat.h>
 #include <sys/times.h>
@@ -265,7 +265,7 @@ EXTERN int sys_clear(void);
  */
 EXTERN int sys_gticks(void);
 
-EXTERN int sys_get_process_info(int i);
+EXTERN int sys_get_process_info(pid_t pid, struct process_buf *buf);
 
 #endif /* _ASM_FILE_ */
 

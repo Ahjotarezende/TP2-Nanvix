@@ -126,8 +126,9 @@ PUBLIC void pm_init(void)
 	enable_interrupts();
 }
 
-int do_get_process_info(int i)
+int do_get_process_info(pid_t pid, struct process_buf *buf)
 {
-	kprintf("To no kernnel: %d", i);
+	(void)buf;
+	kprintf("To no kernnel: %d", pid);
 	return 0;
 }
