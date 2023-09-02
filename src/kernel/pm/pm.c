@@ -71,7 +71,7 @@ PUBLIC unsigned nprocs = 0;
  */
 PUBLIC void pm_init(void)
 {
-	int i;             /* Loop index.      */
+	int i;			   /* Loop index.      */
 	struct process *p; /* Working process. */
 
 	/* Initialize the process table. */
@@ -124,4 +124,10 @@ PUBLIC void pm_init(void)
 	nprocs++;
 
 	enable_interrupts();
+}
+
+int do_get_process_info(int i)
+{
+	kprintf("To no kernnel: %d", i);
+	return 0;
 }
