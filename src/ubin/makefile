@@ -145,7 +145,7 @@ nim:
 sleep: 
 	$(CC) $(CFLAGS) $(LDFLAGS) -D TESTE sleep/*.c -o $(UBINDIR)/sleep $(LIBDIR)/libc.a
 
-# Construir get_process_info.
+# Construir getpi.
 getpi:
 	$(CC) $(CFLAGS) $(LDFLAGS) getpi/*.c -o $(UBINDIR)/getpi $(LIBDIR)/libc.a
 

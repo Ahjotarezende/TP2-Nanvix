@@ -129,6 +129,16 @@ PUBLIC void pm_init(void)
 int do_get_process_info(pid_t pid, struct process_buf *buf)
 {
 	(void)buf;
-	kprintf("To no kernnel: %d", pid);
-	return 0;
+	struct process *p;
+	for (p = FIRST_PROC; p <= LAST_PROC; p++)
+		if (p->pid == pid)
+		{
+			buf->pid = p->pid;
+			buf->ktime = p->ktime;
+			buf->utime = p->utime;
+			buf->priority = p->priority;
+			buf->state = p->state;
+			return 0;
+		}
+	return -1;
 }
