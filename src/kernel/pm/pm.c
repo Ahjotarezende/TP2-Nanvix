@@ -126,18 +126,19 @@ PUBLIC void pm_init(void)
 	enable_interrupts();
 }
 
+/*Funcao de Kernel onde ocorre a procura pelo ID informado*/
 int do_get_process_info(pid_t pid, struct process_buf *buf)
 {
-	(void)buf;
-	struct process *p;
+	struct process *p; // Ponteiro para a estrutura de processos
 	for (p = FIRST_PROC; p <= LAST_PROC; p++)
+		// Comecamos pelo primeiro processo e vamos ate o ultimo passando de endereco em endereco
 		if (p->pid == pid)
-		{
-			buf->pid = p->pid;
-			buf->ktime = p->ktime;
-			buf->utime = p->utime;
-			buf->priority = p->priority;
-			buf->state = p->state;
+		{								 // Caso o ID seja encontrado, guardamos as informacoes no buffer
+			buf->pid = p->pid;			 // Guardamos o PID
+			buf->ktime = p->ktime;		 // Guardamos o tempo de Kernel
+			buf->utime = p->utime;		 // Guardamos o tempo de usuario
+			buf->priority = p->priority; // Guardamos a prioridade
+			buf->state = p->state;		 // Guardamos o estado
 			return 0;
 		}
 	return -1;
