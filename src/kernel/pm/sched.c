@@ -59,6 +59,15 @@ PUBLIC void resume(struct process *proc)
 		sched(proc);
 }
 
+int getPriority(struct process *proc)
+{
+	/*Quanto maior o counter, maior prioridade
+	Quanto menor a priority e nice, maior prioridade
+	Subtraimos nice e priority do counter, e quanto maior o resultado, maior a prioridade
+	*/
+	return proc->counter - proc->priority - proc->nice;
+}
+
 /**
  * @brief Yields the processor.
  */
@@ -98,7 +107,7 @@ PUBLIC void yield(void)
 		 * Process with higher
 		 * waiting time found.
 		 */
-		if ((p->nice + p->counter + p->priority) > (next->nice + next->counter + next->priority))
+		if (getPriority(p) > getPriority(next))
 		{
 			next->counter++;
 			next = p;
