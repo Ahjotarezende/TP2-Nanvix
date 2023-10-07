@@ -22,4 +22,4 @@ or in a virtual machine, using a system image.
 
 Nanvix is a free software that is under the GPL V3 license and is
 maintained by Pedro Henrique Penna. Any questions or suggestions send him an
-email: <pedrohenriquepenna@gmail.com>
+email: <pedrohenriquepenna@gmail.com>.
