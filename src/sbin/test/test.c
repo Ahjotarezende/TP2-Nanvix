@@ -639,13 +639,23 @@ int main(int argc, char **argv)
 		/* Scheduling test. */
 		else if (!strcmp(argv[i], "sched"))
 		{
+			/* Statistics time for scheduling tests */
+			clock_t t0, t1;
+			struct tms timing;
+
 			printf("Scheduling Tests\n");
+			t0 = times(&timing);
 			printf("  waiting for child  [%s]\n",
 				(!sched_test0()) ? "PASSED" : "FAILED");
 			printf("  dynamic priorities [%s]\n",
 				(!sched_test1()) ? "PASSED" : "FAILED");
 			printf("  scheduler stress   [%s]\n",
 				(!sched_test2() && !sched_test3()) ? "PASSED" : "FAILED");
+
+			t1 = times(&timing);
+
+			/* Print timing statistics. */
+			printf("  Elapsed: %d\n", t1 - t0);
 		}
 
 		/* IPC test. */
